@@ -5,6 +5,8 @@
  */
 package game;
 
+import res.ResReference;
+
 import java.awt.event.KeyEvent;
 import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
@@ -38,7 +40,7 @@ public class Niveles implements Runnable{
     
     public Niveles() {
         cantidad=2;
-        escenario = new Level("src/lvl/nivel11.txt");
+        escenario = new Level(ResReference.class.getResourceAsStream("lvl/nivel11.txt"));
         hero= new Heroe(0,0,escenario,escenario.getTileObjectMatrix());
         enemy= new ProcesoE(cantidad,800,240);
         jefe= new ProcesoB();
@@ -134,7 +136,7 @@ public class Niveles implements Runnable{
             enemy.getEnemigo().setMuerte();
             hero.Puntaje();
             efecto.setEfecto(3);
-            escenario = new Level("src/lvl/nivel12.txt");
+            escenario = new Level( ResReference.class.getResourceAsStream("lvl/nivel12.txt"));
             hero.setCurrentLevel(escenario);
             t.stop();
             a++;
@@ -168,7 +170,7 @@ public class Niveles implements Runnable{
         sonido.getAudio().start();
         sonido.getAudio().loop(Clip.LOOP_CONTINUOUSLY);
         enemy.setCantidad(2);
-        escenario = new Level("src/lvl/level21.txt");
+        escenario = new Level(ResReference.class.getResourceAsStream("lvl/level21.txt"));
         hero= new Heroe(0,0,escenario,escenario.getTileObjectMatrix());
         hero.setVida(Hvida);
         hero.setPuntaje(HPuntaje);
@@ -211,7 +213,7 @@ public class Niveles implements Runnable{
         }
             
         if(enemy.getEnemigos(1).getVida()==0 && enemy.getEnemigos(0).getVida()==0 && a==0){
-            escenario = new Level("src/lvl/level22.txt");
+            escenario = new Level(ResReference.class.getResourceAsStream("lvl/level22.txt"));
             hero.setCurrentLevel(escenario);
             hero.Puntaje();
             hero.Puntaje();
@@ -256,7 +258,7 @@ public class Niveles implements Runnable{
         
         int hx,hy;
         sonido.getAudio().start();
-        escenario = new Level("src/lvl/3nivel1.txt");
+        escenario = new Level(ResReference.class.getResourceAsStream("lvl/3nivel1.txt"));
         hero= new Heroe(0,0,escenario,escenario.getTileObjectMatrix());
         hero.setVida(Hvida);
         hero.setPuntaje(HPuntaje);
@@ -293,7 +295,7 @@ public class Niveles implements Runnable{
         }
 
         if(hero.getPosX()>235 && a==0){
-            escenario = new Level("src/lvl/3nivel31.txt");
+            escenario = new Level(ResReference.class.getResourceAsStream("lvl/3nivel31.txt"));
             hero.setCurrentLevel(escenario);
             efecto.setEfecto(6);
             j.start();

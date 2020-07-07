@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Scanner;
 /**
  *
@@ -17,15 +19,15 @@ public class Level {
     private TileClass tileSprites;
     private int fil = 20, col = 40;
     private String[][] levelDefinition;
-    private String levelDefinitionURL;
+    private InputStream levelDefinitionURL;
     private Scanner fileReader;
     private File file;
     private TileObject[][] tileObjectMatrix = new TileObject[20][40];
     
-    public Level(String levelDefinitionURL){
+    public Level(InputStream levelDefinitionURL){
         this.levelDefinitionURL = levelDefinitionURL;
         levelDefinition = new String[fil][col];
-        file = new File(levelDefinitionURL);
+        //file = levelDefinitionURL;
         tileSprites = new TileClass();
         defineLevel();
         defineTileObjectMatrix();
@@ -33,13 +35,13 @@ public class Level {
     }
     private void defineLevel(){
         try {
-            fileReader = new Scanner(file);
+            fileReader = new Scanner(levelDefinitionURL);
             for(int i = 0; i < fil; i++){
                 levelDefinition[i] = fileReader.nextLine().split(",");
             }
             System.out.println("Se ha cargado el nivel correctamente");
             
-        } catch (FileNotFoundException ex) {
+        } catch (NullPointerException ex) {
             System.out.println("Error al cargar el archivo de definicion de nivel: " + ex.getMessage());
         }   
     }

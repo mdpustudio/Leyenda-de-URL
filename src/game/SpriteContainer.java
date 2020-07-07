@@ -5,6 +5,8 @@
  */
 package game;
 
+import res.ResReference;
+
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -25,14 +27,14 @@ public class SpriteContainer {
         try{
             for(int i = 0; i < 128; i+=32){
                 for(int j = 0; j <96; j+=32){
-                    sprites.put(idSprite, cropImage(ImageIO.read(new File("src/res/charactersprites.png")), new Rectangle(32,32), j, i));
+                    sprites.put(idSprite, cropImage(ImageIO.read(ResReference.class.getResource("img/charactersprites.png")), new Rectangle(32,32), j, i));
                     idSprite++;
                 } 
             }
             idSprite = 0;
             for(int i = 0; i < 128; i+=32){
                 for(int j = 0; j <96; j+=32){
-                    ATKSprites.put(idSprite, cropImage(ImageIO.read(new File("src/res/charactersprites2.png")), new Rectangle(32,32), j, i));
+                    ATKSprites.put(idSprite, cropImage(ImageIO.read(ResReference.class.getResource("img/charactersprites2.png")), new Rectangle(32,32), j, i));
                     idSprite++;
                 } 
             }

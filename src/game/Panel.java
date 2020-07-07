@@ -5,6 +5,8 @@
  */
 package game;
 
+import res.ResReference;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -36,8 +38,8 @@ public class Panel extends JPanel{
     
     public Panel(int w, int h){
         try {
-            this.corazon = ImageIO.read(new File("src/res/zeldaHC.png"));
-            this.rupia= ImageIO.read(new File("src/res/zeldaR.png"));
+            this.corazon = ImageIO.read(ResReference.class.getResource("img/zeldaHC.png"));
+            this.rupia= ImageIO.read(ResReference.class.getResource("img/zeldaR.png"));
         } catch (IOException ex) {
             Logger.getLogger(Panel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LeyendaDeURL:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LeyendaDeURL_jar</output-path>
+    <root id="archive" name="LeyendaDeURL.jar">
+      <element id="module-output" name="LeyendaDeURL" />
+    </root>
+  </artifact>
+</component>

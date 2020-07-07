@@ -1,6 +1,8 @@
 
 package game;
 
+import res.ResReference;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -59,7 +61,7 @@ public class MenuPanel extends JPanel{
         super.paintComponent(g);
         g.setColor(Color.red);
         try {
-            img = ImageIO.read(new File("src/res/bgi.png"));
+            img = ImageIO.read(ResReference.class.getResource("img/bgi.png"));
         } catch (IOException ex) {
             Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

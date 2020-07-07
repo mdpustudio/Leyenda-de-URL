@@ -7,10 +7,12 @@ package game;
 import java.awt.*;
 import javax.swing.JLabel;
 import DBConnection.ZQuery;
+import res.ResReference;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.URISyntaxException;
 import java.util.HashMap;
-import java.util.Iterator;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -64,7 +66,12 @@ public class Highscore extends JPanel{
     
     //Colocando Nueva Fuente
     public void nuevaFont(){
-        File file = new File("src/res/terminator.ttf");
+        File file = null;
+        try {
+          file = new File(ResReference.class.getResource("img/terminator.ttf").toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         try {
             font = Font.createFont(Font.TRUETYPE_FONT, file);
             font = font.deriveFont(Font.TRUETYPE_FONT,18);
@@ -172,13 +179,13 @@ public class Highscore extends JPanel{
     }
     public void Imagenes() {
         setLayout(null);
-        ImageIcon g = new ImageIcon("src/res/Highscore.png"); 
+        ImageIcon g = new ImageIcon(ResReference.class.getResource("img/Highscore.png"));
         l = new JLabel(g);
         l.setBounds(100, 0, 1000, 294); 
         add(l);
         
         try {
-            image = ImageIO.read(new File("src/res/background.jpg"));
+            image = ImageIO.read(ResReference.class.getResource("img/background.jpg"));
             
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());

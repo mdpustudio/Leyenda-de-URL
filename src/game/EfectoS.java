@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 package game;
+import res.ResReference;
+
 import java.io.*;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -16,15 +18,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  * @author Carlos
  */
-public class EfectoS { 
-    private String efecto1= "src/ef/enemy hit.wav";
-    private String efecto2= "src/ef/fighter sword 1.wav";
-    private String efecto3= "src/ef/key 1.wav";
-    private String efecto4= "src/ef/73 - Game Over.wav";
-    private String efecto5= "src/ef/heart.wav";
-    private String efecto6= "src/ef/bomb explode.wav"; 
-    private String efecto7= "src/ef/boss hit.wav"; 
-    private String efecto8= "src/ef/thunder.wav"; 
+public class EfectoS {
+    private URL efecto1= ResReference.class.getResource("ef/enemy hit.wav");
+    private URL efecto2= ResReference.class.getResource("ef/fighter sword 1.wav");
+    private URL efecto3= ResReference.class.getResource("ef/key 1.wav");
+    private URL efecto4= ResReference.class.getResource("ef/73 - Game Over.wav");
+    private URL efecto5= ResReference.class.getResource("ef/heart.wav");
+    private URL efecto6= ResReference.class.getResource("ef/bomb explode.wav");
+    private URL efecto7= ResReference.class.getResource("ef/boss hit.wav");
+    private URL efecto8= ResReference.class.getResource("ef/thunder.wav");
     private Clip audio;
     
     public EfectoS() {
@@ -39,19 +41,19 @@ public class EfectoS {
         try {
                 if(i==1 && !audio.isRunning()){
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto1)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto1));
                     audio.start();
                     audio.loop(0);
                 }
                 if(i==2 && !audio.isRunning()){
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto2)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto2));
                     audio.start();
                     audio.loop(0);
                 }
                 if(i==3){
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto3)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto3));
                     audio.start();
                     audio.loop(0);
                 }
@@ -60,25 +62,25 @@ public class EfectoS {
                         audio.stop();
                     }
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto4)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto4));
                     audio.start();
                     audio.loop(0);
                 }
                 if(i==5 && !audio.isRunning()){
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto5)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto5));
                     audio.start();
                     audio.loop(0);
                 }
                 if(i==6 && !audio.isRunning()){
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto6)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto6));
                     audio.start();
                     audio.loop(0);
                 }
                 if(i==7 && !audio.isRunning()){
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto7)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto7));
                     audio.start();
                     audio.loop(0);
                 }
@@ -87,7 +89,7 @@ public class EfectoS {
                         audio.stop();
                     }
                     audio.close();
-                    audio.open(AudioSystem.getAudioInputStream(new File(efecto8)));
+                    audio.open(AudioSystem.getAudioInputStream(efecto8));
                     audio.start();
                     audio.loop(0);
                 }

@@ -5,6 +5,8 @@
  */
 package game;
 
+import res.ResReference;
+
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,7 +29,7 @@ public class TileClass {
             for(int j = 0; j < 576; j+=32){
                 try {
                     BufferedImage imagenTemporal;
-                    imagenTemporal = cropImage(ImageIO.read(new File("src/res/tilesheet.png")), new Rectangle(32,32), j,i);
+                    imagenTemporal = cropImage(ImageIO.read(ResReference.class.getResource("img/tilesheet.png")), new Rectangle(32,32), j,i);
                     if((spriteId >=0 && spriteId <= 2) || (spriteId >=8 && spriteId <= 14) || (spriteId >=18 && spriteId <= 20) || (spriteId >=26 && spriteId <= 31) || (spriteId >=36 && spriteId <= 38)|| (spriteId >=44 && spriteId <= 45)|| (spriteId >=47 && spriteId <= 49)) TileSprites.put(spriteId, new TileObject(imagenTemporal, false, false));
                     else if(spriteId >= 11 && spriteId <= 18) TileSprites.put(spriteId, new TileObject(imagenTemporal, true, true));
                     else TileSprites.put(spriteId, new TileObject(imagenTemporal, true, false));

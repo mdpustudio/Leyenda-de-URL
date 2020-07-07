@@ -12,7 +12,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.net.URISyntaxException;
+
 import DBConnection.ZQuery;
+import res.ResReference;
 
 /**
  *
@@ -94,17 +97,17 @@ public class Result extends JPanel{
     
     public void add(){
         setLayout(null);
-        ImageIcon O = new ImageIcon("src/res/gameover.png");
+        ImageIcon O = new ImageIcon(ResReference.class.getResource("img/gameover.png"));
         o = new JLabel(O);
         o.setBounds(300,0,600,377);
         
         add(o);
          try {
             if(ventana.getPanel().getNivelAct()==5){
-                image = ImageIO.read(new File("src/res/elmofire.jpg"));
+                image = ImageIO.read(ResReference.class.getResource("img/elmofire.jpg"));
             } 
             else
-                image = ImageIO.read(new File("src/res/elmofirewin.jpg"));   
+                image = ImageIO.read(ResReference.class.getResource("img/elmofirewin.jpg"));
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -143,7 +146,12 @@ public class Result extends JPanel{
     
     
     public void nuevaFont(){
-        File file = new File("src/res/terminator.ttf");
+        File file = null;
+        try {
+            file = new File(ResReference.class.getResource("img/terminator.ttf").toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         try {
             font = Font.createFont(Font.TRUETYPE_FONT, file);
             font = font.deriveFont(Font.TRUETYPE_FONT,36);
